@@ -26,15 +26,15 @@ const About = () => {
       <div className="flex flex-col md:flex-row mb-20">
         <div className='border px-10 md:px-16 py-8 sm:py-16 flex flex-col text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer'>
           <b>Efficiency</b>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt assumenda cupiditate optio? Ab blanditiis exercitationem accusamus! In sint ea at ad ratione ut aperiam sunt provident dolores, itaque explicabo quod!</p>
+          <p>Lorem ipsum et, consectetur adipisicing elit. Deserunt assumenda cupiditate optio? Ab blanditiis exercitationem accusamus! In sint ea at ad ratione ut aperiam sunt provident dolores, itaque explicabo quod!</p>
         </div>
         <div className='border px-10 md:px-16 py-8 sm:py-16 flex flex-col text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer'>
            <b>Convinience</b>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, facilis ullam officiis fugiat possimus doloribus ipsa alias, earum corporis neque dolores id nemo dolorum odit exercitationem quia porro repellat consequatur!</p>
+          <p>Lorem ipsum et, consectetur adipisicing elit. Architecto, facilis ullam officiis fugiat possimus doloribus ipsa alias, earum corporis neque dolores id nemo dolorum odit exercitationem quia porro repellat consequatur!</p>
         </div>
         <div className='border px-10 md:px-16 py-8 sm:py-16 flex flex-col text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer'>
            <b>Personalization</b>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure similique libero a assumenda veniam velit fuga adipisci corrupti doloribus natus, enim cupiditate pariatur dolorem dolore provident voluptatibus quos, error ipsam.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure similique libero a assumenda veniam velit fuga adipisci corrupti doloribus natus, enim cupiditate pariatur dolorem dolore provident voluptatibus .</p>
         </div>
       </div>
     </div>
