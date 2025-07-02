@@ -7,6 +7,7 @@ const Doctors = () => {
   const {speciality} = useParams()
   const { doctors} = useContext(AppContext)
   const[filterDoc,setFilterDoc] = useState([])
+  const[showfilter,setshowfilter] = useState(false)
   const applyFilter = () =>{
     if(speciality){
       setFilterDoc(doctors.filter(doc=> doc.speciality === speciality))
@@ -23,8 +24,8 @@ applyFilter()
       <div>
          <p className='text-gray-600'>Browse through the doctors specialist.</p>
       <div className='flex flex-col sm:flex-row gap-5 mt-5'>
-     
-        <div className="flex flex-col gap-4 text-sm text-gray-600 ">
+     <button className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${showfilter?'bg-primary text-white':''} `} onClick={()=>setshowfilter(prev=> !prev)}>Filters</button>
+        <div className={` ${showfilter?'flex' : 'hidden sm:flex'} flex flex-col gap-4 text-sm text-gray-600 `}>
           <p onClick={()=>speciality==='General physician'?navigate('/doctors'):navigate('/doctors/General physician')} className={`w-[84vw] p-2 sm:w-auto pt-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==='General physician'?"bg-indigo-50 text-black":""} ` }>General Physician</p>
           <p onClick={()=>speciality==='Gynecologist'?navigate('/doctors'):navigate('/doctors/Gynecologist')}  className={`w-[84vw] p-2 sm:w-auto pt-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==='Gynecologist'?"bg-indigo-50 text-black":""} ` }>Gynecologist</p>
           <p onClick={()=>speciality==='Dermatologist'?navigate('/doctors'):navigate('/doctors/Dermatologist')} className={`w-[84vw] p-2 sm:w-auto pt-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${speciality==='Dermatologist'?"bg-indigo-50 text-black":""} ` }>Dermatologist</p>
