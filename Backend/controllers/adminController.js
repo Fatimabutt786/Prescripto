@@ -76,4 +76,6 @@ try {
 }
   }
 
+  
+
 export {loginAdmin,addDoctor,allDoctors}
