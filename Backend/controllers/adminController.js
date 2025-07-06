@@ -7,8 +7,9 @@ import {v2 as cloudinary} from 'cloudinary'
 const addDoctor = async (req,res) =>{
     try {
       const {name,email,password,speciality,degree,experience,about,fee,address} = req.body;
-const imageFile = req.imageFile
+const imageFile = req.file;
 // checking for all data to add doctor
+console.log(name,email,password,speciality,degree,experience,about,fee,address,imageFile)
 if(!name||!email,!password||!speciality||!degree||!experience|| !about || !fee || !address || !imageFile){
 return res.json({success:false,message:"Missing Details"})
 }
@@ -22,7 +23,7 @@ if(password.length<8){
 }
 // hashing doctor password
 const salt = await bycrypt.genSalt(10);
-const hashedPassword =  bycrypt.hash(password,salt)
+const hashedPassword = await bycrypt.hash(password,salt)
 
 // upload image to cloudinary
 const imageUpload = await cloudinary.uploader.upload(imageFile.path, {resource_type:"image"})
@@ -49,7 +50,12 @@ const loginAdmin = async (req,res) =>{
   try {
     const {email,password} = req.body
     if(email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD){
-     const token = jwt.sign(email+password,process.env.JWT_SECRET)
+   const token = jwt.sign(
+  { email },
+  process.env.JWT_SECRET,
+  { expiresIn: "7d" }
+);
+
      res.json({success:true,token})
     }else{
         res.json({success:false,message:"Invalid Credentials"})

@@ -1,26 +1,33 @@
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 
 // admin authentication
+const authAdmin = async (req, res, next) => {
+  console.log("✅ authAdmin middleware triggered"); // add this at the top
 
-const authAdmin = async (req,res,next) =>{
   try {
-    const {atoken} = req.headers
-    if(atoken){
-        return res.json({success:false,message:"Not Authorized"})
+   const aToken = req.headers.atoken;
 
+
+console.log("TOKEN FROM HEADER:", aToken);
+
+    // ❗ Check if token is MISSING
+    if (!aToken) {
+      return res.json({ success: false, message: 'JWT must be provided' });
     }
-    const token_decode = jwt.verify(atoken,process.env.JWT_SECRET)
 
-if(token_decode!=process.env.ADMIN_EMAIL + process.env.ADMIN_PASSWORD){
-    return res.json({success:false,message:"Not Authorized"})
+  const token_decode = jwt.verify(aToken, process.env.JWT_SECRET);
+console.log("Decoded token:", token_decode); // ✅ log decoded
+console.log("Expected email:", process.env.ADMIN_EMAIL); // ✅ log expected
+if (token_decode.email !== process.env.ADMIN_EMAIL) {
+  return res.json({ success: false, message: "Not Authorized" });
 }
 
-next()
 
+    next();
   } catch (error) {
-    console.log(error)
-    res.json({success:false,message:error.message})
+    console.log(error);
+    res.json({ success: false, message: error.message });
   }
-}
+};
 
-export default authAdmin
+export default authAdmin;
