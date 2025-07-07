@@ -65,7 +65,7 @@ const loginAdmin = async (req,res) =>{
     }
   }
 
-  // api to get all doctors
+// api to get all doctor
 
   const allDoctors = async (req,res)=>{
 try {

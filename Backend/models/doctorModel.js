@@ -6,7 +6,7 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    email: {
+    email: { 
       type: String,
       required: true,
       unique: true,
