@@ -40,7 +40,7 @@ setDoctors(data.doctors)
     }
 
         const value = {
-doctors,currencySymbol,token,setToken,backendUrl,userdata,setuserdata,loadUserProfileData
+doctors,getDoctorsData,currencySymbol,token,setToken,backendUrl,userdata,setuserdata,loadUserProfileData
     }
 
     useEffect(()=>{
