@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useContext } from 'react';
 import { AppContext } from '../Context/AppContext';
 import axios from 'axios';
@@ -40,7 +40,11 @@ if(data.success){
      toast.error(error.message || "Something went wrong")
 }
    }
-     
+     useEffect(()=>{
+if(token){
+  navigate('/')
+}
+     },[token])
      
   return (
     <form className='min-h-[80vh] flex items-center' onSubmit={onSubmitHandler}>
