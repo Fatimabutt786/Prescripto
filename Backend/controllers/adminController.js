@@ -3,6 +3,7 @@ import vallidator from 'validator'
 import bycrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import {v2 as cloudinary} from 'cloudinary'
+import appointmentModel from '../models/appointmentModel.js'
 // API for adding doctor
 const addDoctor = async (req,res) =>{
     try {
@@ -76,6 +77,14 @@ try {
 }
   }
 
-  
+  //  Api to get all appointments list
+  const appointmentAdmin = async (req,res) =>{
+try {
+  const appointments = await appointmentModel.find({})
+  res.json({success:true,appointments})
+} catch (error) {
+   res.json({success:false,message:error.message})
+}
+  }
 
-export {loginAdmin,addDoctor,allDoctors}
+export {loginAdmin,addDoctor,allDoctors, appointmentAdmin}
