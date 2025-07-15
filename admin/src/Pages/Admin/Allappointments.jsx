@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { AdminContext } from '../../Context/AdminContext'
+import { assets } from '../../assets/assets'
 
 const Allappointments = () => {
-  const { aToken, appointments, getAllAppointments } = useContext(AdminContext)
+  const { aToken, appointments, getAllAppointments, cancelAppointment } = useContext(AdminContext)
 
   useEffect(() => {
     if (aToken) {
@@ -67,10 +68,11 @@ const Allappointments = () => {
             <p>{item.docData?.fee ? `Rs ${item.docData.fee}` : '-'}</p>
 
             {/* Actions */}
-            <div className='flex gap-2'>
-              <button className='text-blue-500 hover:underline'>View</button>
-              <button className='text-red-500 hover:underline'>Delete</button>
-            </div>
+            {
+              item.cancelled 
+              ? <p className='text-red-400 text-xs font-medium'>Cancelled</p>
+              : <img onClick={()=>cancelAppointment(item._id)} src={assets.cancel_icon} className='w-10 cursor-pointer' />
+            }
           </div>
         ))}
       </div>
