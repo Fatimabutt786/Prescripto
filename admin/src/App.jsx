@@ -11,10 +11,15 @@ import Dashboard from './Pages/Admin/Dashboard'
 import Allappointments from './Pages/Admin/Allappointments'
 import AddDoctor from './Pages/Admin/AddDoctor'
 import Doctorslist from './Pages/Admin/Doctorslist'
+import { DocotorContext } from './Context/DoctorContext'
+import DoctorDashboard from './Pages/Doctor/DoctorDashboard'
+import DoctorAppointment from './Pages/Doctor/DoctorAppointment'
+import DoctorProfile from './Pages/Doctor/DoctorProfile'
 
 const App = () => {
   const {aToken} = useContext(AdminContext)
-  return aToken ? (
+  const {dToken} = useContext(DocotorContext)
+  return aToken || dToken ? (
     <div className='bg-[#F8F9FD]' >
     <ToastContainer />
     <Navbar />
@@ -22,11 +27,18 @@ const App = () => {
       <Sidebar />
       <Routes>
         <Route path='/' element={<></>}/>
+        {/* admin route */}
         <Route path='/admin-dashboard' element={<Dashboard />}/>
         <Route path='/all-appointments' element={<Allappointments />}/>
          <Route path='/add-doctor' element={<AddDoctor />}/>
           <Route path='/doctor-list' element={<Doctorslist />}/>
+          {/* doctor route */}
+            <Route path='/doctor-dashboard' element={<DoctorDashboard />}/>
+               <Route path='/doctor-appointments' element={<DoctorAppointment />}/>
+                  <Route path='/doctor-profile' element={<DoctorProfile />}/>
       </Routes>
+
+
     </div>
     </div>
   ): (
