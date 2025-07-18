@@ -12,6 +12,7 @@ const[token,setToken] = useState(localStorage.getItem('token')?localStorage.getI
 const[userdata,setuserdata] = useState(false)
     const getDoctorsData = async () =>{
         try {
+            console.log(backendUrl)
             const {data} = await axios.get(backendUrl+'/api/doctor/list')
             if(data.success){
 setDoctors(data.doctors)

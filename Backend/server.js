@@ -6,25 +6,29 @@ import connectcloudinary from './config/cloundinary.js'
 import adminRouter from './routes/adminRoutes.js'
 import doctorRouter from './routes/doctorRoute.js'
 import userRouter from './routes/userRoutes.js'
-// app config
+
 const app = express()
 const port = process.env.PORT || 4000
+
 connectDB()
 connectcloudinary()
-// middlewares
+
+// ✅ CORRECT middleware setup
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173', // for local frontend
+  credentials: true
+}))
 
-// api endpoint
-app.use('/api/admin',adminRouter)
-app.use('/api/doctor',doctorRouter)
-app.use('/api/user',userRouter)
+// ✅ Routes
+app.use('/api/admin', adminRouter)
+app.use('/api/doctor', doctorRouter)
+app.use('/api/user', userRouter)
 
-
-app.get('/',(req,res)=>{
-    res.send('API WORKING Greate!')
+app.get('/', (req, res) => {
+  res.send('API WORKING Great!')
 })
 
-app.listen(port,(req,res)=>{
-   console.log("Server Started",port) 
+app.listen(port, () => {
+  console.log('Server Started on Port', port)
 })
