@@ -8,12 +8,12 @@ const doctorSchema = new mongoose.Schema(
     },
     email: { 
       type: String,
-      required: true,
-      unique: true,
+      required: false, // ❗ for dummy doctors
+      unique: false,   // ❗ set to false so multiple dummy docs allowed
     },
     password: {
       type: String,
-      required: true,
+      required: false, // ❗ dummy doctors don’t login
     },
     image: {
       type: String,
@@ -37,7 +37,7 @@ const doctorSchema = new mongoose.Schema(
     },
     available: {
       type: Boolean,
-    default:true
+      default: true,
     },
     fee: {
       type: Number,
@@ -45,11 +45,11 @@ const doctorSchema = new mongoose.Schema(
     },
     address: {
       type: Object,
-      required: true,
+      required: false, // ❗ dummy can skip address
     },
     date: {
       type: Number,
-      required: true,
+      required: false, // ❗ dummy can skip
     },
     slots_booked: {
       type: Object,
